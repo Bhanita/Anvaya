@@ -55,12 +55,13 @@
         $(function () {
       $('input[type="radio"]').click('change',function(e){
         var ratingValue = $('input[name="rating"]:checked').val();
-        console.log(ratingValue)
+        //console.log(ratingValue)
         
 window.parent.postMessage(JSON.stringify({
          event_code: 'ym-client-event', data: JSON.stringify({
            event: {
              code: "rating",
+             test: "hello world"
              data: {
                selectedRating: ratingValue
              }
