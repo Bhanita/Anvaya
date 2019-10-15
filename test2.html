@@ -54,18 +54,17 @@
       $('input[type="radio"]').click('change',function(e){
         var ratingValue = $('input[name="rating"]:checked').val();
       
-        
-window.parent.postMessage(JSON.stringify({
-         event_code: 'ym-client-event', data: JSON.stringify({
+        var options = {
            event: {
-             code: "rating",
-             test2: 3,
-             dummy: $('input[name="rating"]:checked').val(),
+             code: "rating",           
+             dummy: ratingValue,
              data: {
                selectedRating: ratingValue
              }
            }
-         })
+         }
+window.parent.postMessage(JSON.stringify({
+         event_code: 'ym-client-event', data: JSON.stringify(options)
        }), '*');
         $('input[type="radio"]').attr('disabled', 'disabled');
       })
