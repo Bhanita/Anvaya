@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Star rating using pure CSS</title>
   <style>
 *{
@@ -46,7 +45,6 @@
     color: #c59b08;
 }
 
-/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
   </style>
   
 </head>
@@ -55,13 +53,13 @@
         $(function () {
       $('input[type="radio"]').click('change',function(e){
         var ratingValue = $('input[name="rating"]:checked').val();
-        //console.log(ratingValue)
+      
         
 window.parent.postMessage(JSON.stringify({
          event_code: 'ym-client-event', data: JSON.stringify({
            event: {
              code: "rating",
-             test: "hello world"
+             test: "hello world",
              data: {
                selectedRating: ratingValue
              }
