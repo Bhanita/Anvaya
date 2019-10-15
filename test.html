@@ -50,6 +50,27 @@
   </style>
   
 </head>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+      $('input[type="radio"]').click('change',function(e){
+        var ratingValue = $('input[name="rating"]:checked').val();
+        console.log(ratingValue)
+        
+window.parent.postMessage(JSON.stringify({
+         event_code: 'ym-client-event', data: JSON.stringify({
+           event: {
+             code: "rating",
+             data: {
+               selectedRating: ratingValue
+             }
+           }
+         })
+       }), '*');
+        $('input[type="radio"]').attr('disabled', 'disabled');
+      })
+    })
+    </script>
 
 <body>
   <div class="rate">
