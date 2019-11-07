@@ -1,88 +1,67 @@
-
+<!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <title>Star rating using pure CSS</title>
-  <style>
-*{
-    margin: 0;
-    padding: 0;
-}
-.rate {
-    float: left;
-    height: 10px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: #ffc700;    
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
 }
 
-  </style>
-  
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
 </head>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-      $('input[type="radio"]').click('change',function(e){
-        var ratingValue = $('input[name="rating"]:checked').val();
-      
-        var options = {
-           event: {
-             code: "rating",           
-             data: {
-               selectedRating: ratingValue
-             }
-           }
-         }
-window.parent.postMessage(JSON.stringify({
-         event_code: 'ym-client-event', data: JSON.stringify(options)
-       }), '*');
-        $('input[type="radio"]').attr('disabled', 'disabled');
-      })
-    })
-    </script>
-
 <body>
-  <div class="rate">
-    <input type="radio" id="star5" name="rating" value="5" />
-    <label for="star5" title="text">5 stars</label>
-    <input type="radio" id="star4" name="rating" value="4" />
-    <label for="star4" title="text">4 stars</label>
-    <input type="radio" id="star3" name="rating" value="3" />
-    <label for="star3" title="text">3 stars</label>
-    <input type="radio" id="star2" name="rating" value="2" />
-    <label for="star2" title="text">2 stars</label>
-    <input type="radio" id="star1" name="rating" value="1" />
-    <label for="star1" title="text">1 star</label>
+
+<div class="dropdown">
+  <button class="dropbtn">State Name</button>
+  <div class="dropdown-content">
+    <a href="#">Johor</a>
+    <a href="#">Kedah</a>
+    <a href="#">Kelantan</a>
+    <a href="#">Kuala lumpur</a>
+    <a href="#">Melaka</a>
+    <a href="#">Negeri Sembilan</a>
+    <a href="#">Pahang</a>
+    <a href="#">Perak</a>
+    <a href="#">Perlis</a>
+    <a href="#">Pulau pinang</a>
+    <a href="#">Putrajaya</a>
+    <a href="#">Sabah</a>
+    <a href="#">Sarawak</a>
+    <a href="#">Selangor</a>
+    <a href="#">Terengganu</a>
+    
   </div>
+</div>
+
 </body>
 </html>
-
